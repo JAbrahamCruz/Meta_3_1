@@ -14,8 +14,8 @@ const relationRoutes = require('./routes/relationsRoutes');
 
 // Rutas base
 app.use('/api/movies', movieRoutes);
-// app.use('/api/directors', directorRoutes);
-// app.use('/api/actors', actorRoutes);
+app.use('/api/directors', directorRoutes);
+app.use('/api/actors', actorRoutes);
 // app.use('/api/relations', relationRoutes);
 
 // Ruta raíz

@@ -49,7 +49,7 @@ let movies = [
     releaseYear: 2001,
     genre: ["Romance", "Comedy", "Drama"],
     duration: 122,
-    directorId: "dir_fr_001",
+    directorId: "dir_mx_001",
     rating: 8.3,
     language: "Francés",
     country: "Francia"
