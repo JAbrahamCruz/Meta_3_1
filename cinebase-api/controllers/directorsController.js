@@ -1,5 +1,5 @@
-const directors = require('../models/directorsModel')
-const movies = require('../models/moviesModel')
+import directors from '../my-models/directorsModel.js';
+import movies from '../my-models/moviesModel.js';
 
 const getAllDirectors = (req, res) => {
     const { nationality, minBirthYear } = req.query;
@@ -33,4 +33,4 @@ const postDirector = (req, res) => {
     res.status(201).json({ message: 'Director creado', director: newDirector })
 }
 
-module.exports = { getAllDirectors, getDirectorMovies, postDirector }
+export { getAllDirectors, getDirectorMovies, postDirector }

@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const { getAllActors, getActorMovies, postActor } = require('../controllers/actorsController');
+import { getAllActors, getActorMovies, postActor } from '../controllers/actorsController.js';
 
 router.get('/', getAllActors);
 router.get('/:id/movies', getActorMovies);
 router.post('/', postActor);
 
-module.exports = router;
+export default router;

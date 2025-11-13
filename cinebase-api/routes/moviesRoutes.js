@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const { getAllMovies, getMovieById, createMovie, patchMovie, deleteMovie } = require('../controllers/moviesController');
+import { getAllMovies, getMovieById, createMovie, patchMovie, deleteMovie } from '../controllers/moviesController.js';
 
 // Rutas RESTful
 router.get('/', getAllMovies);
@@ -9,4 +9,4 @@ router.post('/', createMovie);
 router.patch('/:id', patchMovie);
 router.delete('/:id', deleteMovie);
 
-module.exports = router;
+export default router;

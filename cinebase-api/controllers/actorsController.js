@@ -1,6 +1,6 @@
-const actors = require('../models/actorsModel');
-const movieActors = require('../models/movieActors');
-const movies = require('../models/moviesModel');
+import actors from '../my-models/actorsModel.js';
+import movieActors from '../my-models/movieActors.js';
+import movies from '../my-models/moviesModel.js';
 
 const getAllActors = (req, res) => {
     const { nationality, minBirthYear } = req.query;
@@ -42,4 +42,4 @@ const postActor = (req, res) => {
     res.status(201).json({ message: 'Nuevo actor creado', actor: newActor });
 }
 
-module.exports = { getAllActors, getActorMovies, postActor }
+export { getAllActors, getActorMovies, postActor };

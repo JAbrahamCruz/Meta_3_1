@@ -1,10 +1,10 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const { getAllDirectors, getDirectorMovies, postDirector } = require('../controllers/directorsController')
+import { getAllDirectors, getDirectorMovies, postDirector } from '../controllers/directorsController.js';
 
 // Rutas RESTful
 router.get('/', getAllDirectors);
 router.get('/:id/movies', getDirectorMovies);
 router.post('/', postDirector);
 
-module.exports = router;
+export default router;

@@ -1,6 +1,5 @@
-// controllers/moviesController.js
-const movies = require('../models/moviesModel');
-const directors = require('../models/directorsModel');
+import movies from '../my-models/moviesModel.js';
+import directors from '../my-models/directorsModel.js';
 
 const getAllMovies = (req, res) => {
   const { genre, minRating, minYear, maxYear } = req.query;
@@ -76,4 +75,4 @@ const deleteMovie = (req, res) => {
   res.json({ message: 'Película eliminada', movie: deletedMovie });
 };
 
-module.exports = { getAllMovies, getMovieById, createMovie, patchMovie, deleteMovie };
+export { getAllMovies, getMovieById, createMovie, patchMovie, deleteMovie };

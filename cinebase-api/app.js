@@ -1,5 +1,6 @@
 // app.js
-const express = require('express');
+// const express = require('express');
+import express from 'express';
 const app = express();
 const PORT = 3000;
 
@@ -7,10 +8,15 @@ const PORT = 3000;
 app.use(express.json());
 
 // Importar rutas
-const movieRoutes = require('./routes/moviesRoutes');
-const directorRoutes = require('./routes/directorsRoutes');
-const actorRoutes = require('./routes/actorsRoutes');
-const relationRoutes = require('./routes/relationsRoutes');
+// const movieRoutes = require('./routes/moviesRoutes');
+// const directorRoutes = require('./routes/directorsRoutes');
+// const actorRoutes = require('./routes/actorsRoutes');
+// const relationRoutes = require('./routes/relationsRoutes');
+
+import movieRoutes from './routes/moviesRoutes.js';
+import directorRoutes from './routes/directorsRoutes.js';
+import actorRoutes from './routes/actorsRoutes.js';
+// import relationsRoutes from './routes/relationsRoutes.js';
 
 // Rutas base
 app.use('/api/movies', movieRoutes);
@@ -27,3 +33,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
+
+export default app;
