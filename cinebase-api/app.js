@@ -1,28 +1,40 @@
 // app.js
 // const express = require('express');
 import express from 'express';
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
+
 const app = express();
 const PORT = 3000;
 
 // Middleware
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
+
+app.use(cookieParser());
 app.use(express.json());
 
-// Importar rutas
-// const movieRoutes = require('./routes/moviesRoutes');
-// const directorRoutes = require('./routes/directorsRoutes');
-// const actorRoutes = require('./routes/actorsRoutes');
-// const relationRoutes = require('./routes/relationsRoutes');
+import authRoutes from './auth/auth.routes.js'
+app.use('/api/auth', authRoutes);
 
-import movieRoutes from './routes/moviesRoutes.js';
-import directorRoutes from './routes/directorsRoutes.js';
-import actorRoutes from './routes/actorsRoutes.js';
-// import relationsRoutes from './routes/relationsRoutes.js';
+import authMiddleware from './auth/auth.middleware.js';
+if (process.env.NODE_ENV === 'production') {
+  app.use(authMiddleware.verificarAutenticacion);
+} else {
+  console.log('Autenticación deshabilitada');
+}
+
+// Importar rutas
+import directorRoutes from './routes/director.routes.js';
+import movieRoutes from './routes/movie.routes.js'
+import actorRoutes from './routes/actor.routes.js'
 
 // Rutas base
-app.use('/api/movies', movieRoutes);
 app.use('/api/directors', directorRoutes);
-app.use('/api/actors', actorRoutes);
-// app.use('/api/relations', relationRoutes);
+app.use('/api/movies', movieRoutes);
+app.use('/api/actors', actorRoutes)
 
 // Ruta raíz
 app.get('/', (req, res) => {
